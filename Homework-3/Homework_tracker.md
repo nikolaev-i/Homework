@@ -5,6 +5,8 @@
 
 ---
 
-[HW-1]((https://github.com/nikolaev-i/Homework/blob/master/Homework-1/Ivan_Nikolaev_DevOps_creative_thinking.pdf)
+[HW-1](https://github.com/nikolaev-i/Homework/blob/master/Homework-1/Ivan_Nikolaev_DevOps_creative_thinking.pdf)
+
 [HW-2](https://github.com/nikolaev-i/Homework/blob/master/Homework-2/Ivan_Nikolaev_HW_2.pdf)
+
 [HW-3](https://github.com/nikolaev-i/Homework/blob/master/Homework-3/Ivan_Nikolaev_HW_3.pdf)
