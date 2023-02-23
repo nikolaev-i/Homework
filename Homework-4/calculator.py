@@ -18,8 +18,11 @@
 
 from ascii import *
 import os
-operators = ['+', '-', '/', '*', '%', 'H']
+operators = ['+', '-', '/', '*', '%', 'H', 'p']
 choice = None
+precision = 3
+choices = ['no','n']
+
 
 #Sanitize input
 
@@ -67,6 +70,11 @@ def mod():
   a,b = input_variables()
   return a%b
 
+def change_precision():
+    global precision
+    precision = check_input(input())
+   
+
 
 def history():
   history = open("history.txt", "w")
@@ -74,6 +82,10 @@ def history():
 
 def operation_select(x):
   match x:
+    case 'p':
+      print("Enter new floating point precission")
+      change_precision()
+         
     case '+':
       print("addition selected")
       return add()
@@ -95,17 +107,21 @@ def operation_select(x):
     case default:
         return 0
 
-while choice != "n" :
+
+
+while choice not in choices:
   
   print(calc_1)
   print("Please select operation: ")
-  print("""
+  print(f"""
   + for Addition
   - for Substraction
   * for Multiplication
   / for Division
   % for Modulo 
-  H for Check history """)
+  H for Check history 
+  p for Changing pricision, current precision is {precision}""")
+  
 
   while True:
     operator = check_operator(input()) 
@@ -116,8 +132,8 @@ while choice != "n" :
   result = operation_select(operator)
   if result is not None:
     os.system('clear')
-    print(f'{calc_2}| |         {result:<10}     | |{calc_3}')
-  print("Would you like to continu ? [y/n]: ")
+    print(f'{calc_2}| | {result:<20.{precision}f}   | |{calc_3}')
+  print("Would you like to do a new calculation? [yes/no] ")
   choice = input()
 
   
