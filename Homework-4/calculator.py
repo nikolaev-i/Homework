@@ -54,7 +54,10 @@ def sub():
 
 def div():
   a,b = input_variables()
-  return a/b
+  try:
+    return a/b
+  except ZeroDivisionError:
+    return f"!{a}/0!"
 
 def mult():
   a,b = input_variables()
