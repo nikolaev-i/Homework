@@ -70,29 +70,21 @@ while True:
 
 
 
+def operation_select(x):
+  match x:
+    case '+':
+      return
+    case '-':
+      return
+    case '/':
+      return
+    case '*':
+      return
+    case '%':
+      return
+    case 'M':
+      return
+    case default:
+        return 
 
 
-
-
-#print(type(x))
-
-#switch={
-#
-#}
-
-#
-#def sub(a):
-#  return a-b
-#
-#def multi():
-#  return a*b
-#
-#def div():
-#  return a/b
-#  
-#def mod():
-#  return a%b
-##def read_history():
-##
-##def clear_history():
-##  
