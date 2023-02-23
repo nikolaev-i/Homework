@@ -18,16 +18,19 @@
 
 from ascii import *
 import os
-
-operators = ['+', '-', '/', '*', '%', 'M']
+operators = ['+', '-', '/', '*', '%', 'H']
+choice = None
 
 #Sanitize input
 
 def check_input(x):
-  if "." in x :
-    return float(x)
-  else:
-    return int(x)
+  try:
+    if "." in x :
+      return float(x)
+    else:
+      return int(x)
+  except:
+    print("Invalid number")    #Better error handling
 
 def check_operator(x): 
   if x not in operators:
@@ -35,11 +38,11 @@ def check_operator(x):
   else: return x
 
 def input_variables():
-  print("Please input value for A")
-  a = check_input(input())
-  print("Please input value for B")
-  b = check_input(input())
-  return a,b
+    print("Please input value for A")
+    a = check_input(input())
+    print("Please input value for B")
+    b = check_input(input())
+    return a,b
 
 def add():
   a,b = input_variables()
@@ -61,30 +64,57 @@ def mod():
   a,b = input_variables()
   return a%b
 
-print("Please select operation")
-while True:
-  operator = check_operator(input())
-  print(operator)
-  if operator in operators:
-    break
 
+def history():
+  history = open("history.txt", "w")
 
 
 def operation_select(x):
   match x:
     case '+':
-      return
+      print("addition selected")
+      return add()
     case '-':
-      return
+      print("substraction selected")
+      return sub()
     case '/':
-      return
+      print("division selected")
+      return div()
     case '*':
-      return
+      print("multiplication selected")
+      return mult()
     case '%':
-      return
-    case 'M':
+      print("modulus selected")
+      return mod()
+    case 'H':
+      print("Please subscribe to this feature for $3.99 / month")
       return
     case default:
-        return 
+        return 0
 
+while choice != "n" :
+  
+  print(calc_1)
+  print("Please select operation: ")
+  print("""
+  + for Addition
+  - for Substraction
+  * for Multiplication
+  / for Division
+  % for Modulo 
+  H for Check history """)
 
+  while True:
+    operator = check_operator(input()) 
+    if operator in operators:
+      os.system('clear')
+      break
+
+  result = operation_select(operator)
+  if result is not None:
+    os.system('clear')
+    print(f'{calc_2}| |         {result:<10}     | |{calc_3}')
+  print("Would you like to continu ? [y/n]: ")
+  choice = input()
+
+  
