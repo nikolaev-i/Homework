@@ -15,3 +15,68 @@
 # Enter second number: 14 15.0 * 14.0 = 210.0
 #  Would you like to do a new calculation? 
 #  (yes/no): no 
+
+from ascii import *
+
+operators = ['+', '-', '/', '*', '%']
+
+#Sanitize input
+
+def check_input(x):
+  if "." in x :
+    return float(x)
+  else:
+    return int(x)
+
+def check_operator(x): 
+  if x not in operators:
+     print("Please select PROPER operation")
+  else: return x
+
+
+print("Please select operation")
+while True:
+  operator = check_operator(input())
+  print(operator)
+  if operator in operators:
+    break
+
+a = check_input(input())
+
+b = check_input(input())
+
+
+
+
+
+
+
+
+
+
+
+#print(instruction)
+
+#print(type(x))
+
+#switch={
+#
+#}
+#def add():
+#  return a+b
+#
+#def sub(a):
+#  return a-b
+#
+#def multi():
+#  return a*b
+#
+#def div():
+#  return a/b
+#  
+#def mod():
+#  return a%b
+##def read_history():
+##
+##def clear_history():
+##  
