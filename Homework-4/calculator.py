@@ -17,8 +17,9 @@
 #  (yes/no): no 
 
 from ascii import *
+import os
 
-operators = ['+', '-', '/', '*', '%']
+operators = ['+', '-', '/', '*', '%', 'M']
 
 #Sanitize input
 
@@ -33,6 +34,32 @@ def check_operator(x):
      print("Please select PROPER operation")
   else: return x
 
+def input_variables():
+  print("Please input value for A")
+  a = check_input(input())
+  print("Please input value for B")
+  b = check_input(input())
+  return a,b
+
+def add():
+  a,b = input_variables()
+  return a+b
+
+def sub():
+  a,b = input_variables()
+  return a-b
+
+def div():
+  a,b = input_variables()
+  return a/b
+
+def mult():
+  a,b = input_variables()
+  return a*b
+
+def mod():
+  a,b = input_variables()
+  return a%b
 
 print("Please select operation")
 while True:
@@ -41,29 +68,18 @@ while True:
   if operator in operators:
     break
 
-a = check_input(input())
-
-b = check_input(input())
 
 
 
 
 
-
-
-
-
-
-
-#print(instruction)
 
 #print(type(x))
 
 #switch={
 #
 #}
-#def add():
-#  return a+b
+
 #
 #def sub(a):
 #  return a-b
