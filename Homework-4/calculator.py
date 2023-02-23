@@ -1,3 +1,5 @@
+#Use at your OWN risk
+
 # Write a Calculator program with the following functionality:
 # - The user chooses the operation 
 # - add, subtract, multiply, divide   = check whether the choice is valid   = every operation should be a separate function 
@@ -18,7 +20,7 @@
 
 from ascii import *
 import os
-operators = ['+', '-', '/', '*', '%', 'H', 'p']
+operators = ['+', '-', '/', '*', '%', 'H', 'p', 'q']
 choice = None
 precision = 3
 choices = ['no','n']
@@ -85,7 +87,6 @@ def operation_select(x):
     case 'p':
       print("Enter new floating point precission")
       change_precision()
-         
     case '+':
       print("addition selected")
       return add()
@@ -104,8 +105,9 @@ def operation_select(x):
     case 'H':
       print("Please subscribe to this feature for $3.99 / month")
       return
-    case default:
-        return 0
+    case 'q':
+        quit()
+    
 
 
 
@@ -120,7 +122,8 @@ while choice not in choices:
   / for Division
   % for Modulo 
   H for Check history 
-  p for Changing pricision, current precision is {precision}""")
+  p for Changing pricision, current precision is {precision}
+  q for Quit""")
   
 
   while True:
@@ -131,8 +134,10 @@ while choice not in choices:
 
   result = operation_select(operator)
   if result is not None:
-    os.system('clear')
-    print(f'{calc_2}| | {result:<20.{precision}f}   | |{calc_3}')
+    if isinstance(result, float):
+      os.system('clear')
+      print(f'{calc_2}| |    {result:>20.{precision}f}| |{calc_3}')
+    else: print(f'{calc_2}| |    {result:>20}| |{calc_3}') 
   print("Would you like to do a new calculation? [yes/no] ")
   choice = input()
 
