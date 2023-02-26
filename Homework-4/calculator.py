@@ -83,29 +83,28 @@ def history():
 
 
 def operation_select(x):
-  match x:
-    case 'p':
-      print("Enter new floating point precission")
-      change_precision()
-    case '+':
-      print("addition selected")
-      return add()
-    case '-':
-      print("substraction selected")
-      return sub()
-    case '/':
-      print("division selected")
-      return div()
-    case '*':
-      print("multiplication selected")
-      return mult()
-    case '%':
-      print("modulus selected")
-      return mod()
-    case 'H':
-      print("Please subscribe to this feature for $3.99 / month")
-      return
-    case 'q':
+    if x == 'p':
+        print("Enter new floating point precision")
+        change_precision()
+    elif x == '+':
+        print("Addition selected")
+        return add()
+    elif x == '-':
+        print("Subtraction selected")
+        return sub()
+    elif x == '/':
+        print("Division selected")
+        return div()
+    elif x == '*':
+        print("Multiplication selected")
+        return mult()
+    elif x == '%':
+        print("Modulus selected")
+        return mod()
+    elif x == 'H':
+        print("Please subscribe to this feature for $3.99/month")
+        return
+    elif x == 'q':
         quit()
     
 
