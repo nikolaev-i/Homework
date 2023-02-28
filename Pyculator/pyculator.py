@@ -1,9 +1,9 @@
 from urllib.parse import parse_qs
 # https://zrej4m4d08.execute-api.us-east-2.amazonaws.com/test/pyculator - Link
 def lambda_handler(event, context):
-    print(event)
-    http_method = event['httpMethod']
     
+    http_method = event['httpMethod']
+    #Method check
     if http_method == 'POST':
         # Parse the form data from the request body
         form_data = parse_qs(event['body'])
@@ -27,7 +27,7 @@ def lambda_handler(event, context):
         else:
             result = 'Invalid operation'
 
-        # Construct a response message with the result of the operation
+        # Server the result + reform the HTLM
         content ="""
         <html>
          <pre> 
