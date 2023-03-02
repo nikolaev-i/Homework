@@ -47,8 +47,9 @@ du -h cars.txt
 #"-----copy to temp-----"
 cp cars.txt /tmp
 
-echo "------check tmp if the file is there-----"
+echo "------check tmp if the file is there and is the same---"
 ls /tmp | grep .txt
+diff cars.txt /tmp/cars.txt --brief
 
 #"-----rename file-----"
 mv /tmp/cars.txt /tmp/vehicles.txt
