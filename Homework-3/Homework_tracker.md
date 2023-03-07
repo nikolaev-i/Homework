@@ -1,7 +1,7 @@
 			# Uploaded homework
 | HW-1 | HW-2 | HW-3 | HW-4 | HW-5 | HW-6 |
 |:----:|:---- | ---- | ---- | ---- | ---- |
-|  ✅  | ✅  | ✅   | ✅  |      |      |
+|  ✅  | ✅  | ✅   | ✅  | ✅   |      |
 
 ---
 
@@ -12,4 +12,8 @@
 [HW-3](https://github.com/nikolaev-i/Homework/blob/master/Homework-3/Ivan_Nikolaev_HW_3.pdf)
 
 [HW-4](https://github.com/nikolaev-i/Homework/blob/master/Homework-4)
+
+[HW-5](https://github.com/nikolaev-i/Homework/blob/master/Homework-5)
+
+
 
