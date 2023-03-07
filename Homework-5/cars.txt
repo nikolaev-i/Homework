@@ -1,2 +1,16 @@
 e- Dacia\nPerson 3\nPerson 3\nPerson 3\nPerson 3
 e- 5\nd\nd\nd\nd
+e- \nf\nf\nf\nf
+e- s\nf\nf\nf\nf
+e- \nd\nd\nd\nd
+e- \033[0;31m echo \033[0m f\nd\nd\nd\nd
+e- f\nd\nd\nd\nd
+e- a\nd\nd\nd\nd
+e- aaa\nd\nd\nd\nd
+e- www\nd\nd\nd\nd
+e- www\nd\nd\nd\nd
+a
+d
+d
+d
+d
