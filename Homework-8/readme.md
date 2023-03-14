@@ -155,8 +155,9 @@ over a maximum of 30 hops:
 
 
 **Since we are talking about web traffic (www) in the example, which transport layer protocol will most probably be used?**
--[x] TCP
--[ ] UDP
+
+- [x] TCP
+- [ ] UDP
 
 
  
