@@ -36,12 +36,9 @@ Interface: 172.22.240.1 --- 0x40
   224.0.0.251           01-00-5e-00-00-fb     static
   239.255.255.250       01-00-5e-7f-ff-fa     static
 ```
-
+---
 
 - **route PRINT**
-
-
-
 
 ```
 IPv4 Route Table
@@ -71,6 +68,7 @@ Network Destination        Netmask          Gateway       Interface  Metric
   255.255.255.255  255.255.255.255         On-link      172.22.240.1    271
 ===========================================================================
 ```
+---
 
 - **google dns server**
 
@@ -91,11 +89,13 @@ over a maximum of 30 hops:
   8     9 ms     8 ms     8 ms  dns.google [8.8.8.8]
   ```
 
+---
+
 - **Why would you need to use the ping command ?** 
 ```
      Checking if the host is alive, latency, troubleshooting connection, PoD(ping of death)
 ```
-
+---
 
 | Protocol          | TCP | UDP | PORT  |
 | ----------------- | --- | --- | ----- |
@@ -117,16 +117,49 @@ over a maximum of 30 hops:
 
 ---
 
-# Exercise 2 – TCP/IP Basics 
+# Exercise 2 – TCP/IP Basics: 
+---
+*Refer to the exhibit and answer the questions below. The letter symbol ✉, represents the IP packet as it travels across the network.  In the example shown, the laptop attempts to communicate with the web server in question. During its travel the packet will be forwarded across the network nodes and will eventually end up across six network interfaces before it reaches the web server. Each packet as part of the TCP/IP Stack contains fields for the source and destination MAC Address, IP Address and the TCP/UDP Port.*
 
+---
 
 ![network](img/network.png)
 
+**For each of the packet locations shown, 1 to 4 write down the source and destination MAC addresses of the packet as it travels across the network interfaces.**
+
+   1. The laptop initiates communication with the web server and prepares a packet. What would the packet look like at this stage?
+       - SRC IP 100.20.30.10
+       - DST IP 80.70.60.100
+       - SRC MAC AA:AA:AA:33:33:33
+       - DST MAC BB:BB:BB:11:11:01
+
+   2. RTR1 receives the packet on its IF-LAN interface, prepares it accordingly and forwards it out its IF-WAN. What would the packet look like at this stage?
+       - SRC IP 100.20.30.10
+       - DST IP 80.70.60.100
+       - SRC MAC BB:BB:BB:11:11:02
+       - DST MAC CC:CC:CC:22:22:02
 
 
+   3. RTR2 receives the packet on its IF-WAN interface, prepares it accordingly and forwards it out via IF-LAN. What would the packet look like at this stage?
+       - SRC IP 100.20.30.10
+       - DST IP 80.70.60.100
+       - SRC MAC CC:CC:CC:22:22:01
+       - DST MAC DD:DD:DD:77:77:77
 
 
+    4. The web server receives the packet and prepares a response packet back. What would the packet look like at this stage? 
+       - SRC IP 80.70.60.100
+       - DST IP 100.20.30.10
+       - SRC MAC DD:DD:DD:77:77:77
+       - DST MAC CC:CC:CC:22:22:01
 
+
+**Since we are talking about web traffic (www) in the example, which transport layer protocol will most probably be used?**
+-[x] TCP
+-[ ] UDP
+
+
+ 
 
 
 
