@@ -160,12 +160,19 @@ over a maximum of 30 hops:
 - [ ] UDP
 
 
- 
+**If we do a traffic analysis with a network packet monitoring tool like WireShark, what can we expect to see for the source and destination ports when the laptop sends the packet?**
+- SRC PORT: ephemeral port
+- DST PORT: well-know port
 
 
+**Similarly, and vice versa, what can we expect to see as destination ports when the Web server sends a response packet back?**
+- SRC PORT: well-know port
+- DST PORT: ephemeral port
 
+**How many broadcast domains are there in the exhibit shown?** 
+- 4 broadcast domains
 
-
+# Exercise 3 – Traffic analysis and identifying the OSI layers of the network packets
 
 
 
