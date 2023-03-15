@@ -139,7 +139,6 @@ over a maximum of 30 hops:
        - SRC MAC BB:BB:BB:11:11:02
        - DST MAC CC:CC:CC:22:22:02
 
-
    3. RTR2 receives the packet on its IF-WAN interface, prepares it accordingly and forwards it out via IF-LAN. What would the packet look like at this stage?
        - SRC IP 100.20.30.10
        - DST IP 80.70.60.100
@@ -173,6 +172,54 @@ over a maximum of 30 hops:
 - 4 broadcast domains
 
 # Exercise 3 – Traffic analysis and identifying the OSI layers of the network packets
+
+| target site            | IP adress      |
+| ---------------------- | -------------- |
+| www.scalefocus.academy | 34.117.168.233 |
+
+**Analyze the TCP’s three-way handshake and using screenshots from the Wireshark window answer the questions bellow:**
+ 1. What is the source IP (of the initiating host):
+ 2. What is the destination IP? (target website): 
+
+
+![syn](img/syn.png)
+
+---
+
+**Identify the Network Interface (Layer 1 & 2) section of the SYN packet and paste a screenshot from it:**
+
+![L1L2](img/SYNL1L2.png)
+
+---
+
+**Identify the Network Layer 3 section of the SYN/ACK packet and paste a screenshot from it:**
+
+![SYNACKL3](img/SYNACKL3.png)
+
+---
+
+**Identify the Transport Layer 4 section of the ACK packet and paste a screenshot from it bellow:**
+
+![L4](img/ACKL4.png)
+
+---
+
+**Who is the owner of the destination MAC address of the SYN packet?**
+ *Owner is the default gateway*
+
+
+# Exercise 4 – Hacking mockup (for Bonus points) 
+
+**From your own system try to login with a Telnet on the target VM all while capturing the traffic with a Wireshark. As a proof of competition for this exercise paste in bellow a screenshot of the application layer data containing visible username and password.**
+
+---
+
+![example1](img/loopback.png)
+
+Windows is a bit finicky with loopbacks.
+Solution I used is adding a route => my machine > router > my machine. This information is in the loopback section of wireshark
+
+
 
 
 
