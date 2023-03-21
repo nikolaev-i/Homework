@@ -16,5 +16,6 @@ Task 7: Scale compute and storage for Azure virtual machine scale sets (optional
 ---
 
 ![azure_icons-500x183](https://user-images.githubusercontent.com/11695111/226553347-8add832d-3d47-435f-b8cd-86f3032fd4f8.png)
+![azure](https://www.mydraw.com/NIMG.axd?i=Shape-Libraries/Cloud/Azure/Networking-Service-Color/Networking-Service-Color_PreviewLarge.png)
 
 Icon reference
