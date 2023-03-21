@@ -1,5 +1,4 @@
 Task 1: Deploy zone-resilient Azure virtual machines by using the Azure portal and an Azure Resource Manager template
- - What is a zone-resilient VM ?
 	
 Task 2: Configure Azure virtual machines by using virtual machine extensions
 
@@ -19,3 +18,10 @@ Task 7: Scale compute and storage for Azure virtual machine scale sets (optional
 ![azure](https://www.mydraw.com/NIMG.axd?i=Shape-Libraries/Cloud/Azure/Networking-Service-Color/Networking-Service-Color_PreviewLarge.png)
 
 Icon reference
+TODO: Make better icon pack / check excalidraw
+RESEARCH:
+- zone-resilient VM ?
+- Availability options ?
+- Why 3 Zones ? 
+- VMs vs Containers use cases ?
+- How to edit VM after you've created it ?
