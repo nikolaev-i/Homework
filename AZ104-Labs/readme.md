@@ -5,6 +5,6 @@ Lab 01
 
 ---
 
-Lab02a
+Lab 02a
 
 ![image](https://user-images.githubusercontent.com/11695111/226962782-0d913d93-f804-41f0-b6b4-52801a728be0.png)
