@@ -1,5 +1,5 @@
 # Scale Focus Academy Homework
-
+TODO: Bring everything up to date 
 - Homework-1 📝
     - DevOps creative thinking
 
@@ -9,7 +9,7 @@
 - Homework-3 📝
     - Git
     - Github
-    -Markdown
+    - Markdown
 
 - Homework-4 📝
     - Python calculator
@@ -22,12 +22,26 @@
 - Homework-6 📝
     - Bash scripting
     
-- Homework-7 📝
+- Homework-7 📝 
     - Linux user managment 
  
-- Homework-8 📝
-    - Networking 
+- Homework-8 📝 **make a pdf**
+    - Networking
 
+- Homework-9 **WIP**
+   # AZ104
+   - az104-01: Manage Azure Active Directory Identities
+   - az104-02a: Manage Subscriptions and RBAC
+   - az104-02b: Manage Governance via Azure Policy
+
+- Homework-10 **WIP**
+  # AZ 104
+  - az104-08: Manage Virtual Machines
+
+- Homework-11 **WIP**
+ # AZ104
+ - az104-05: Implement Intersite Connectivity
+ - az104-06: Implement Traffic Management
    ---
 
 - Pyculator 📝
