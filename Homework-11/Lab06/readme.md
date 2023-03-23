@@ -46,7 +46,7 @@ ToDo:
  4. Configure routing in the hub and spoke topology
  - Enabling IP forwarding on vm0's nic0 and runing powershell
 
-```
+```powershell
 Install-WindowsFeature RemoteAccess -IncludeManagementTools
 
 ---

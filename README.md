@@ -28,7 +28,7 @@ TODO: Bring everything up to date
 - Homework-8 📝 
     - Networking
 
-- Homework-9 **WIP**
+- Homework-9 📝 
    - az104-01: Manage Azure Active Directory Identities
    - az104-02a: Manage Subscriptions and RBAC
    - az104-02b: Manage Governance via Azure Policy
