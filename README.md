@@ -25,23 +25,20 @@ TODO: Bring everything up to date
 - Homework-7 📝 
     - Linux user managment 
  
-- Homework-8 📝 **make a pdf**
+- Homework-8 📝 
     - Networking
 
 - Homework-9 **WIP**
-   ### AZ104
    - az104-01: Manage Azure Active Directory Identities
    - az104-02a: Manage Subscriptions and RBAC
    - az104-02b: Manage Governance via Azure Policy
 
 - Homework-10 **WIP**
-  ### AZ 104
   - az104-08: Manage Virtual Machines
 
 - Homework-11 **WIP**
- ### AZ104
- - az104-05: Implement Intersite Connectivity
- - az104-06: Implement Traffic Management
+   - az104-05: Implement Intersite Connectivity
+   - az104-06: Implement Traffic Management
 
    ---
 
