@@ -33,12 +33,12 @@ TODO: Bring everything up to date
    - az104-02a: Manage Subscriptions and RBAC
    - az104-02b: Manage Governance via Azure Policy
 
-- Homework-10 **WIP**
+- Homework-10 📝
   - az104-08: Manage Virtual Machines
 
-- Homework-11 **WIP**
+- Homework-11 📝
    - az104-05: Implement Intersite Connectivity
-   - az104-06: Implement Traffic Management
+   - az104-06: Implement Traffic Management **Needs fixing/incomplete**
 
    ---
 
