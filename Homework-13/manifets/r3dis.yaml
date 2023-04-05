@@ -1,0 +1,10 @@
+apiVersion:v11
+kind:pod
+metadata:
+name: static-web
+labels:
+role: myrole
+specs:
+containers:
+- name: redis
+image: redis123
