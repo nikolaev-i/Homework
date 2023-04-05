@@ -139,3 +139,33 @@ spec:
 ![running_pods](img/ks-13.png)
 
 
+3 . Multicontainer pods
+
+Definition of our multicontainer pod
+```yaml
+apiVersion: v1
+kind: Pod
+metadata:
+  name: nginredis
+  labels:
+    app: frontend-backend
+spec:
+  containers:
+  - name: nginx-container
+    image: nginx:1.22.1
+    ports:
+    - containerPort: 80
+  - name: redis-container
+    image: redis:latest
+    ports:
+    - containerPort: 6379
+```
+---
+
+The pod running with two containers inside 
+![multainer](img/ks-14.png)
+
+---
+
+Both containers are pulled from their respective image adresses
+![containers](img/ks-15.png)
