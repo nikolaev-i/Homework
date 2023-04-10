@@ -9,6 +9,9 @@
 
 Running on AKS using local cli 
 
+k is alias for kubectl
+
+Sorry for the crappy pdf but conversion from markdown to pdf sucks
 
 ---
 
@@ -181,7 +184,7 @@ spec:
 ```
 
 5. **Can you use other mode with Azure files ?**
-    - yes, 
+    - yes, ReadWriteOnce, ReadOnlyMany, AzureFile, AzureDisk
 
 
 - Creating azfile-mount-options-pvc
@@ -236,3 +239,167 @@ spec:
 
 
 ```
+
+- Pod is running normally 
+```bash 
+k describe pod mypod
+
+
+Events:
+  Type    Reason     Age    From               Message
+  ----    ------     ----   ----               -------
+  Normal  Scheduled  8m15s  default-scheduler  Successfully assigned default/mypod to aks-agentpool-41905252-vmss00000a
+  Normal  Pulling    8m13s  kubelet            Pulling image "mcr.microsoft.com/oss/nginx/nginx:1.15.5-alpine"
+  Normal  Pulled     8m11s  kubelet            Successfully pulled image "mcr.microsoft.com/oss/nginx/nginx:1.15.5-alpine" in 1.132327587s
+  Normal  Created    8m11s  kubelet            Created container mypod
+  Normal  Started    8m11s  kubelet            Started container mypod
+
+  ```
+
+- Check for test.txt
+```sh
+k exec -it mypod -- sh
+
+/ # ls /mnt/azure/
+test.txt
+```
+
+What happens with the azure fileshare ?
+  - The file is persistent 
+
+---
+
+
+## 3. Provisioning AZ file storage using  using Storage Classes
+
+- Creating azure-file-sc
+
+```yaml
+kind: StorageClass
+apiVersion: storage.k8s.io/v1
+metadata:
+  name: my-azurefile
+provisioner: kubernetes.io/azure-file
+mountOptions:
+  - dir_mode=0777
+  - file_mode=0777
+  - uid=0
+  - gid=0
+  - mfsymlinks
+  - cache=strict
+  - actimeo=30
+parameters:
+  skuName: Standard_LRS
+  ```
+
+
+- Creating azulre-file-pvc
+```yaml
+  apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: my-azurefile
+spec:
+  accessModes:
+    - ReadWriteMany
+  storageClassName: my-azurefile
+  resources:
+    requests:
+      storage: 5Gi
+```
+
+
+- PVC status check
+```bash
+k get pvc my-azurefile
+NAME           STATUS   VOLUME                                     CAPACITY   ACCESS MODES   STORAGECLASS   AGE
+my-azurefile   Bound    pvc-27947ead-22a7-4aa6-97fe-4a9ef5b3084b   5Gi        RWX            my-azurefile   7m
+```
+
+- Creating azure-pvc-files
+```yamls
+apiVersion: v1
+kind: Pod
+metadata:
+  name: mypod
+spec:
+  containers:
+    - name: mypod
+      image: mcr.microsoft.com/oss/nginx/nginx:1.15.5-alpine
+      resources:
+        requests:
+          cpu: 100m
+          memory: 128Mi
+        limits:
+          cpu: 250m
+          memory: 256Mi
+      volumeMounts:
+        - name: azure
+          mountPath: /mnt/azure
+  volumes:
+    - name: azure
+      persistentVolumeClaim:
+        claimName: azurefile
+```
+
+
+
+
+
+- Describe volume claim
+```bash
+
+k describe pod my-pod
+
+Volumes:
+  volume:
+    Type:       PersistentVolumeClaim (a reference to a PersistentVolumeClaim in the same namespace)
+    ClaimName:  my-azurefile
+    ReadOnly:   false
+```
+
+---
+ 
+
+## 4. Direct provisoning of Azure disk storage
+
+- Getting resource group node
+```bash
+az aks show --resource-group kube-01 \
+--name Kluster-01 \
+--query nodeResourceGroup -o tsv
+
+MC_kube-01_Kluster-01_eastus
+```
+
+- Disk creation
+```bash
+az disk create \
+--resource-group MC_kube-01_Kluster-01_eastus \
+--name myAKSDisk \
+--size-gb 20 \
+--query id --output tsv
+
+/subscriptions/0da916b7-0592-453c-a0a2-277eb2a9ab89/resourceGroups/MC_kube-01_Kluster-01_eastus/providers/Microsoft.Compute/disks/myAKSDisk
+```
+
+
+- Checking pod - everything mounted properly
+```bash
+k describe pod mypod
+Volumes:
+  azure:
+    Type:         AzureDisk (an Azure Data Disk mount on the host and bind mount to the pod)
+    DiskName:     myAKSDisk
+    DiskURI:      /subscriptions/0da916b7-0592-453c-a0a2-277eb2a9ab89/resourceGroups/MC_kube-01_Kluster-01_eastus/providers/Microsoft.Compute/disks/myAKSDisk
+```
+
+- Accessing pod
+```bash
+kubectl exec -it mypod -- sh
+/mnt/azure # touch test.txt
+/mnt/azure # ls
+
+lost+found  test.txt
+```
+
