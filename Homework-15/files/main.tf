@@ -3,7 +3,9 @@ variable "id" {}
 variable "t_id" {}
 variable "subscription" {}
 
-
+locals {
+  resource_prefix = "${var.my_name}${random_string.random.result}"
+}
 terraform {
   required_providers {
     azurerm = {
@@ -35,11 +37,11 @@ resource "random_string" "random" {
 }
 
 resource "azurerm_resource_group" "example" {
-  name     = "${var.my_name}-${random_string.random.result}sa"
+  name     = "${local.resource_prefix}-rg"
   location = "${var.location}"
 }
 resource "azurerm_storage_account" "example" {
-  name                     =  "${random_string.random.result}sa"
+  name                     = "${local.resource_prefix}sa"
   resource_group_name      = azurerm_resource_group.example.name
   location                 = azurerm_resource_group.example.location
   account_tier             = "Standard"

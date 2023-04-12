@@ -281,9 +281,10 @@ versioning_enabled and change_feed_enabled set to true.
 - One the storage account
 
 4. Are the number of resources shown in the All resources portal window the same with the ones from your plan?
+   No, one of the resources - random is missing because it's a terraform resource that doesn't get translated into azure
 
 5. Give short explanation about the resources that are not shown?
-
+Random is a terraform provider that is used for utility 
 6. Provide print screen of your portal with all resources.
 
 ![proof](imgs/terra-02.png)
@@ -329,3 +330,41 @@ terraform plan --var-file=account.tfvars inputs.tfvars
 
 Plan: 2 to add, 0 to change, 2 to destroy.
 ```
+
+
+- Creating output file
+```terraform
+output "resource_group_name" {
+  value = azurerm_resource_group.example.name
+  description = "Name of the RG we deploy"
+}
+
+output "storage_account_name" {
+  value = azurerm_storage_account.example.name
+  description = "Name of the ST"
+}
+```
+
+- Results from terraform plan
+```bash
+Plan: 2 to add, 0 to change, 2 to destroy.
+
+Changes to Outputs:
+  + resource_group_name  = "ivankw0qsssb-rg"
+  + storage_account_name = "ivankw0qsssbsa"
+```
+- Force replacement is when terraform cannot just modify the resource and has to delete it
+  e.g `~ resource_group_name               = "kw0qsssbsa" -> "ivankw0qsssb-rg" # forces replacement` resource group name in Azure cannot be changed once created and Terraform is force replacing the entire rg.
+
+
+- Final result
+```bash
+Apply complete! Resources: 2 added, 0 changed, 2 destroyed.
+
+Outputs:
+
+resource_group_name = "ivankw0qsssb-rg"
+storage_account_name = "ivankw0qsssbsa"
+```
+
+![portal](img/../imgs/terra-03.png)
