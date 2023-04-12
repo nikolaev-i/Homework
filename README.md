@@ -49,6 +49,7 @@ TODO: Bring everything up to date
 
 - Homework-14
   - Kubernetes persistent storage
+  - Lab 9C Azure kubernetes service
 
 - Homework-15
   - Terraform
