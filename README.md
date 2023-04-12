@@ -40,6 +40,18 @@ TODO: Bring everything up to date
    - az104-05: Implement Intersite Connectivity
    - az104-06: Implement Traffic Management **Needs fixing/incomplete**
 
+- Homework-12
+  - az104-09: Implement web apps
+  
+- Homework-13
+   - Kubernetes
+
+
+- Homework-14
+  - Kubernetes persistent storage
+
+- Homework-15
+  - Terraform
    ---
 
 - Pyculator 📝
