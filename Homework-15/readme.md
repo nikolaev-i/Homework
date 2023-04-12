@@ -292,3 +292,40 @@ versioning_enabled and change_feed_enabled set to true.
 
 ## 3. Using variables and otuputs
 
+- adding variables
+```terraform
+
+variable "my_name" {
+  type = string
+  description = "First name of the student"
+}
+
+variable "location" {
+  type = string
+  description = "Location"
+  default = "West Europe"
+}
+
+```
+
+- Changing variables in main
+
+```terraform
+ resource "azurerm_resource_group" "example" {
+  name     = "${var.my_name}-${random_string.random.result}sa"
+  location = var.location
+}
+```
+
+1. How many variables do we have defined and which are they ?
+   - Two variables: my_name and location
+2. Why did Terraform asked us to input my_name variable
+   - because the variable doesn't have a value assigned to it 
+
+
+- Adding tf variables
+```bash
+terraform plan --var-file=account.tfvars inputs.tfvars
+
+Plan: 2 to add, 0 to change, 2 to destroy.
+```

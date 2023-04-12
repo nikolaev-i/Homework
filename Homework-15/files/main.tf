@@ -1,4 +1,9 @@
-variable "az_secret" {}
+variable "secret" {}
+variable "id" {}
+variable "t_id" {}
+variable "subscription" {}
+
+
 terraform {
   required_providers {
     azurerm = {
@@ -13,10 +18,10 @@ provider "azurerm" {
 
  features {} 
 
-  client_id       = "4ab9b6b9-7c83-4ebc-b4ab-208cb278f73e"
-  client_secret   = "~528Q~FJoaVS1dXDC9EypIfH9x4b2bQTc_wz4c5h"
-  tenant_id       = "91949ffb-068b-4c9e-96af-28114a5113a4"
-  subscription_id = "0da916b7-0592-453c-a0a2-277eb2a9ab89"
+  client_id       = var.id
+  client_secret   = var.secret
+  tenant_id       = var.t_id
+  subscription_id = var.subscription
 }
 
 
@@ -30,8 +35,8 @@ resource "random_string" "random" {
 }
 
 resource "azurerm_resource_group" "example" {
-  name     = "${random_string.random.result}sa"
-  location = "West Europe"
+  name     = "${var.my_name}-${random_string.random.result}sa"
+  location = "${var.location}"
 }
 resource "azurerm_storage_account" "example" {
   name                     =  "${random_string.random.result}sa"
