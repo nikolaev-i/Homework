@@ -3,3 +3,5 @@ Pyculator/venv
 Homework-15/files/.terraform.lock.hcl
 Homework-15/files/.terraform/
 Homework-15/files/variables.tfvars
+Homework-15/files/terraform.tfstate.backup
+Homework-15/files/terraform.tfstate
