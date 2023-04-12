@@ -52,7 +52,10 @@ TODO: Bring everything up to date
   - Lab 9C Azure kubernetes service
 
 - Homework-15
-  - Terraform
+  - Terraform basics
+
+- Homework-16
+  - Terraform modules
    ---
 
 - Pyculator 📝
