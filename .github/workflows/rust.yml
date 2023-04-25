@@ -3,6 +3,9 @@ name: Rust
 on:
   push:
     branches: [ "master" ]
+    paths:
+         - '**.rs' # Only trigger for JavaScript files
+
 
 env:
   CARGO_TERM_COLOR: always
