@@ -21,5 +21,5 @@ mod tests {
 
 fn main() {
    println!("Hellow world"); 
-   println!("{}"sqrt(2.5));
+   println!("{}",sqrt(2.5));
 }
