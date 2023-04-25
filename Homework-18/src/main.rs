@@ -20,7 +20,7 @@ mod tests {
 
 
 fn main() {
-   println!("Hellow world"); 
+   println!("I use rust btw"); 
    match sqrt(2.5) {
         Ok(result) => println!("{}", result),
         Err(error) => println!("Error: {}", error),
