@@ -58,6 +58,13 @@ TODO: Bring everything up to date
   - Terraform modules
    ---
 
+- Homework-17
+  - Ansible
+  
+- Homework-18
+  - Github actions
+
+
 - Pyculator 📝
     - AWS Lambda python calculator from Homework-4(for fun)
 - AZ-CLI
