@@ -13,9 +13,15 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+    
     - uses: actions/checkout@v3
+    
+    - name: Clippy the clipper
+      working-directory: ./Homework-18
+      run: LoliGothick/clippy-check@v0.2.11
     - name: Build
       working-directory: ./Homework-18
       run:  cargo build --verbose
     - name: Run tests
+      working-directory: ./Homework-18
       run: cargo test --verbose
