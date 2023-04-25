@@ -18,7 +18,7 @@ jobs:
     
     - name: Clippy the clipper
       working-directory: ./Homework-18
-      run: cargo clippy 
+      run: cargo clippy --all-targets --all-features
     - name: Build
       working-directory: ./Homework-18
       run:  cargo build --verbose
