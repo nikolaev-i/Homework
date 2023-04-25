@@ -15,7 +15,7 @@ jobs:
     steps:
     - uses: actions/checkout@v3
     - name: Build
-      working-directory: /Homework-18
+      working-directory: ./Homework-18
       run:  cargo build --verbose
     - name: Run tests
       run: cargo test --verbose
