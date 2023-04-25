@@ -21,4 +21,5 @@ mod tests {
 
 fn main() {
    println!("Hellow world") 
+   println!("doing fixes")
 }
