@@ -20,6 +20,6 @@ mod tests {
 
 
 fn main() {
-   println!("Hellow world") 
-   println!("doing fixes")
+   println!("Hellow world"); 
+   println!(sqrt(2.5));
 }
