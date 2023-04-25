@@ -22,7 +22,7 @@ mod tests {
 fn main() {
    println!("Hellow world"); 
    match sqrt(2.5) {
-        Ok(result) => println!("{}", result),
-        Err(error) => println!("Error: {}", error),
+Ok(result) => println!("{}", result),
+Err(error) => println!("Error: {}", error),
  }
 }
