@@ -51,3 +51,11 @@ resource "azurerm_subnet" "general_network_vms" {
 }
 
 
+module "vm" {
+source = "./vm_module"
+base_name = local.base_name
+location = var.location
+vms_subnet_id = azurerm_subnet.general_network_vms.id
+my_public_ip = var.my_public_ip
+my_password = var.my_passowrd
+}

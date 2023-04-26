@@ -145,4 +145,29 @@ Plan: 3 to add, 0 to change, 0 to destroy.
 ---
 
 ## Task 3 Virtual machines and modules
+   1.  Module variables
+```bash
+variable "base_name" {
+  type        = string
+  description = "vm based name"
+}
+variable "vms_subnet_id" {
+  type        = string
+  description = "subnet id "
+}
+variable "my_public_ip" {
+  type = string
+}
+description = "my public ip"
 
+variable "my_password" {
+  type        = string
+  description = "password"
+}
+variable "location" {
+  type        = string
+  description = "azure region"
+}
+```
+2. Module definitions
+```bash

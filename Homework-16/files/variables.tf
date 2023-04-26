@@ -8,7 +8,6 @@ variable "id" {
   description = "Client ID"
 }
 
-
 variable "t_id" {
   type        = string
   description = "Tennat id"
