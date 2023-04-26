@@ -8,8 +8,9 @@ variable "vms_subnet_id" {
 }
 variable "my_public_ip" {
   type = string
+  description = "my public ip"
 }
-description = "my public ip"
+
 
 variable "my_password" {
   type        = string

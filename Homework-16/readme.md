@@ -171,3 +171,18 @@ variable "location" {
 ```
 2. Module definitions
 ```bash
+locals {}
+
+resource "azurerm_resource_group" "vm-rg" {}
+
+resource "azurerm_public_ip" "vm-pip" {}
+
+resource "azurerm_network_interface" "vm-nic" {}
+
+resource "azurerm_network_security_group" "vm-nsg" {}
+
+resource "azurerm_network_interface_security_group_association" "vm_nsg_to_vm_nic" {}
+
+resource "azurerm_linux_virtual_machine" "web_srv" {}
+
+```
