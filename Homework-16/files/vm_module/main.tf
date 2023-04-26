@@ -12,6 +12,7 @@ resource "azurerm_public_ip" "vm-pip" {
   name                = "${local.vm_name}-pip"
   resource_group_name = azurerm_resource_group.vm-rg.name
   location            = azurerm_resource_group.vm-rg.location
+  allocation_method   = "Static"
 }
 
 
@@ -20,15 +21,15 @@ resource "azurerm_network_interface" "vm-nic" {
   resource_group_name = azurerm_resource_group.vm-rg.name
   location            = azurerm_resource_group.vm-rg.location
   ip_configuration {
-    name                          = external
+    name                          = "external"
     subnet_id                     = var.vms_subnet_id
-    private_ip_address_allocation = dynamic
-    public_ip_address_id          = azurerm_public_ip.vm-rg.id
+    private_ip_address_allocation = "dynamic"
+    public_ip_address_id          = azurerm_public_ip.vm-pip.id
   }
 }
 
 resource "azurerm_network_security_group" "vm-nsg" {
-  name                = "${azurerm_network_interface.vm.name}-nsg"
+  name                = "${azurerm_network_interface.vm-nic.name}-nsg"
   resource_group_name = azurerm_resource_group.vm-rg.name
   location            = azurerm_resource_group.vm-rg.location
 
@@ -64,11 +65,11 @@ resource "azurerm_network_interface_security_group_association" "vm_nsg_to_vm_ni
 
 resource "azurerm_linux_virtual_machine" "web_srv" {
   name                            = local.vm_name
-  resource_group_name             = azurerm_resource_group.vm.name
-  location                        = azurerm_resource_group.vm.location
+  resource_group_name             = azurerm_resource_group.vm-rg.name
+  location                        = azurerm_resource_group.vm-rg.location
   size                            = "Standard_B2s"
   admin_username                  = "adminuser"
-  network_interface_ids           = [azurerm_network_interface.vm.id]
+  network_interface_ids           = [azurerm_network_interface.vm-nic.id]
   admin_password                  = var.my_password
   disable_password_authentication = false
 

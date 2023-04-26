@@ -26,7 +26,17 @@ variable "enviorment" {
   type = string
 }
 
+variable "my_public_ip" {
+  type = string
+  description = "my public ip"
+}
+
+
+variable "my_password" {
+  type        = string
+  description = "password"
+}
 variable "location" {
   type        = string
-  description = "resource location"
+  description = "azure region"
 }
