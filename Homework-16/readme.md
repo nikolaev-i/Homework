@@ -141,3 +141,8 @@ Plan: 3 to add, 0 to change, 0 to destroy.
 4. Successful provision
 
    ![success](img/success.png)
+
+---
+
+## Task 3 Virtual machines and modules
+
