@@ -5,7 +5,7 @@
 
 # Notes
 
-
+.tfvars will not be uploaded for secuirty reasons
 
 Sorry for the crappy pdf but conversion from markdown to pdf sucks
 
@@ -186,3 +186,14 @@ resource "azurerm_network_interface_security_group_association" "vm_nsg_to_vm_ni
 resource "azurerm_linux_virtual_machine" "web_srv" {}
 
 ```
+
+3. Hello from the VM
+![i'm-in](img/I'm-in.png)
+
+
+
+4. Overview of AZ reousrces
+![resources](img/all-resources.png)
+
+
+---

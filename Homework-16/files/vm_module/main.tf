@@ -23,7 +23,7 @@ resource "azurerm_network_interface" "vm-nic" {
   ip_configuration {
     name                          = "external"
     subnet_id                     = var.vms_subnet_id
-    private_ip_address_allocation = "dynamic"
+    private_ip_address_allocation = "Dynamic"
     public_ip_address_id          = azurerm_public_ip.vm-pip.id
   }
 }
