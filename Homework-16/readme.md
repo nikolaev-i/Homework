@@ -47,7 +47,7 @@ Sorry for the crappy pdf but conversion from markdown to pdf sucks
   1. Local variables tf and tfvars
    ```bash
   #Variable declaration
-  
+
   variable "my_name" {
   type        = string
   description = "user name for resource creation"
@@ -72,7 +72,7 @@ variable "location" {
    ```
   2. General network resources
 
-  ```terraform
+  ```bash
   resource "azurerm_resource_group" "general_network" {
   name     = "${local.network_base_name}-rg"
   location = var.location
@@ -137,3 +137,7 @@ resource "azurerm_subnet" "general_network_vms" {
 Plan: 3 to add, 0 to change, 0 to destroy.
 ```
    
+
+4. Successful provision
+
+   ![success](img/success.png)

@@ -49,3 +49,5 @@ resource "azurerm_subnet" "general_network_vms" {
   virtual_network_name = azurerm_virtual_network.general_network.name
   address_prefixes     = ["10.0.1.0/24"]
 }
+
+
