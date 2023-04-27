@@ -1,4 +1,5 @@
 pipeline {
+  agent any
     stages {
         stage('Fetch repository') {
             steps {
@@ -6,6 +7,11 @@ pipeline {
                 sh 'git config core.sparseCheckout true'
                 sh 'echo "Homework-19/*" >> .git/info/sparse-checkout'
                 sh 'git pull origin master'
+            }
+        }
+        stage('Terraform initialise') {
+            steps {
+                sh 'terraform init'
             }
         }
     }
