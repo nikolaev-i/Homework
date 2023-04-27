@@ -1,11 +1,6 @@
 pipeline {
-  triggers {
-       githubPush()
-    }
-    agent any
-
     stages {
-        stage('Hello') {
+        stage('Fetch repository') {
             steps {
                 sh 'git init'
                 sh 'git config core.sparseCheckout true'
