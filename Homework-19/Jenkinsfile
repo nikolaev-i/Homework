@@ -11,12 +11,21 @@ pipeline {
                 sh 'git config core.sparseCheckout true'
                 sh 'echo "Homework-19/*" >> .git/info/sparse-checkout'
                 sh 'git pull origin master'
+                sh 'ls'
+                sh 'cd Homework-19'
             }
         }
-        stage('Terraform initialize') {
+        stage('initialize') {
             steps {
-                
+                sh 'terraform init'
+            }
+        }
+        stage('apply') {
+            steps {
+                sh 'terraform apply --auto-appove'
             }
         }
     }
+    
+
 }
