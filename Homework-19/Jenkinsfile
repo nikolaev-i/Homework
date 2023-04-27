@@ -1,4 +1,7 @@
 pipeline {
+    tools {
+        terraform 'terraform'
+        }
   triggers {
        githubPush()
     }
@@ -7,25 +10,29 @@ pipeline {
     stages {
         stage('Fetch repository') {
             steps {
-                sh 'git init'
-                sh 'git config core.sparseCheckout true'
-                sh 'echo "Homework-19/*" >> .git/info/sparse-checkout'
-                sh 'git pull origin master'
-                sh 'ls'
-                sh 'cd Homework-19'
+                sh 'pwd'
             }
         }
         stage('initialize') {
             steps {
-                sh 'terraform init'
+                    dir('Homework-19') {
+                        sh 'pwd'
+                        sh 'ls'
+                        sh 'terraform init'
+                    }
             }
         }
         stage('apply') {
             steps {
-                sh 'terraform apply --auto-appove'
+                dir('Homework-19') {
+                     sh 'terraform apply -auto-approve'
+                }
+            }
+        }
+        stage('update virtualboxes') {
+            steps {
+                sh 'ansible'
             }
         }
     }
-    
-
 }
