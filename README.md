@@ -46,7 +46,6 @@ TODO: Bring everything up to date
 - Homework-13
    - Kubernetes
 
-
 - Homework-14
   - Kubernetes persistent storage
   - Lab 9C Azure kubernetes service
@@ -56,14 +55,24 @@ TODO: Bring everything up to date
 
 - Homework-16
   - Terraform modules
-   ---
 
 - Homework-17
   - Ansible
   
 - Homework-18
   - Github actions
+  
+- Homework-19
+  - Jenkins
+  
+- Homework-20
+  - ArgoCD
 
+- Homework-21
+  - Kubernetes monitoring
+
+- Homework-22
+  - Azure monitoring
 ---
 
 - Pyculator 📝
