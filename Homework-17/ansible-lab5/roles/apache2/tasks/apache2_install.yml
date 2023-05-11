@@ -1,0 +1,22 @@
+# The first task named "ensure apache is at the latest version" uses the "apt" module to ensure that the Apache package is installed and updated to the latest version. The state parameter is set to "latest" which will check if a newer version of Apache is available and update the package if necessary.
+- name: ensure apache is at the latest version
+  apt: name=apache2 state=latest
+# The second task named "write the apache2 ports.conf config file" uses the "template" module to generate a configuration file for Apache. The source file is defined as "templates/ports.conf.j2" and the destination file is set to "/etc/apache2/ports.conf". This task also includes a "notify" statement to restart Apache if the configuration file changes.
+- name: write the apache2 ports.conf config file
+  template: src=templates/ports.conf.j2 dest=/etc/apache2/ports.conf
+  notify: restart apache
+# The third task named "write a basic index.html file" also uses the "template" module to generate a basic HTML file for Apache. The source file is defined as "templates/index.html.j2" and the destination file is set to "/var/www/html/index.html". Similar to the previous task, this task also includes a "notify" statement to restart Apache if the HTML file changes.
+- name: write a basic index.html file
+  template:
+    src: templates/index.html.j2
+    dest: /var/www/html/index.html
+  notify:
+  - restart apache
+# The fourth and final task named "ensure apache is running" uses the "service" module to ensure that the Apache service is running. The name parameter is set to "apache2" and the state parameter is set to "started" which will start the service if it's not already running.
+- name: ensure apache is running
+  service:
+    name: apache2
+    state: started
+
+# Overall, this Ansible playbook performs basic tasks to ensure that Apache is up-to-date, has the required configuration files, and is running as a service. 
+# These tasks can be modified or expanded upon to perform more complex tasks based on the needs of the infrastructure.
