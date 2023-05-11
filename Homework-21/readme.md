@@ -5,7 +5,8 @@
 
 # Notes
 
-Using homemade kluster with prometheus and windows machine for grafana
+Using homemade kluster with prometheus and grafana
+![kluster](imgs/kluster.jpg)
 
 Sorry for the crappy pdf but conversion from markdown to pdf sucks
 
