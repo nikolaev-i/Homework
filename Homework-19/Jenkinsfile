@@ -1,0 +1,38 @@
+pipeline {
+    tools {
+        terraform 'terraform'
+        }
+  triggers {
+       githubPush()
+    }
+    agent any
+
+    stages {
+        stage('Fetch repository') {
+            steps {
+                sh 'pwd'
+            }
+        }
+        stage('initialize') {
+            steps {
+                    dir('Homework-19') {
+                        sh 'pwd'
+                        sh 'ls'
+                        sh 'terraform init'
+                    }
+            }
+        }
+        stage('apply') {
+            steps {
+                dir('Homework-19') {
+                     sh 'terraform apply -auto-approve'
+                }
+            }
+        }
+        stage('update virtualboxes') {
+            steps {
+                sh 'ansible'
+            }
+        }
+    }
+}

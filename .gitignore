@@ -6,3 +6,7 @@ Homework-15/files/variables.tfvars
 Homework-15/files/terraform.tfstate.backup
 Homework-15/files/terraform.tfstate
 Homework-15/files/account.tfvars
+Homework-18/target
+Homework-16/files/inputs.tfvars
+Homework-16/files/.terraform/providers/registry.terraform.io/hashicorp/azurerm/3.53.0/linux_amd64/terraform-provider-azurerm_v3.53.0_x5
+Homework-16/files/.terraform.lock.hcl

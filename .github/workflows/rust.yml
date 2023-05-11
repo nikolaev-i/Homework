@@ -1,0 +1,30 @@
+name: Rust
+
+on:
+  push:
+    branches: [ "master" ]
+    paths:
+         - '**.rs' # Only trigger for the crab language
+
+
+env:
+  CARGO_TERM_COLOR: always
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    
+    - uses: actions/checkout@v3
+    
+    - name: Clippy the clipper
+      working-directory: ./Homework-18
+      run: cargo clippy --all-targets --all-features
+    - name: Build
+      working-directory: ./Homework-18
+      run:  cargo build --verbose
+    - name: Run tests
+      working-directory: ./Homework-18
+      run: cargo test --verbose
