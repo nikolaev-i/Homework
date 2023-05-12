@@ -206,3 +206,145 @@ curl web01:8000
 
 </html>%
 ```
+
+
+4. Playbooks
+- Modifications to the provided yaml file 
+```yaml
+- hosts: webservers
+  become: yes
+  vars:
+    http_port: 8000
+    https_port: 4443
+    html_welcome_msg: "Hello Scalefocus Academy!"
+    #Added code
+  tasks:
+    - import_tasks: roles/apache2/tasks/apache2_install.yml
+  handlers:
+    - import_tasks: roles/apache2/handlers/main.yml
+  roles:
+    - common
+    - apache2
+
+# The second play targets the hosts with the tag "proxy". 
+- hosts: proxy
+  become: yes
+  roles:
+    - common
+    - nginx
+```
+
+- Final result
+```bash
+PLAY RECAP *************************************************************************************************************************
+loadbalancer               : ok=6    changed=5    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0
+web01                      : ok=10   changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0
+web02                      : ok=10   changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0
+```
+
+5. Roles and Ansible galaxy
+
+- creating role structure
+
+```bash
+
+ansible-galaxy init roles/mysql
+
+- Role webserver was created successfully
+
+
+---
+
+├── defaults
+│   └── main.yml
+├── files
+├── handlers
+│   └── main.yml
+├── meta
+│   └── main.yml
+├── README.md
+├── tasks
+│   └── main.yml
+├── templates
+├── tests
+│   ├── inventory
+│   └── test.yml
+└── vars
+    └── main.yml
+```
+- Checking ansible vault
+nvim vars/vault.yml
+
+
+- Encrypting the vault
+  ```bash
+  ansible-vault encrypt vars/vault.yml
+    New Vault password:
+    Confirm New Vault password:
+    Encryption successful
+  ```
+
+- Adding new a new play to playbook1.yaml
+
+```yaml
+ hosts: webservers
+  become: yes
+  vars_files:
+    - vars/main.yml
+  roles:
+    - common
+    - apache2
+
+- hosts: proxy
+  become: yes
+  roles:
+    - common
+    - nginx
+
+- hosts: database
+  become: yes
+  vars_files:
+    - vars/main.yml
+    - vars/vault.yml
+  vars_prompt:
+    - name: mysql_database
+      prompt: Please enter the database name
+      private: no
+  roles:
+    - common
+    - mysql
+```
+
+- Running the update playbook
+
+```bash
+ansible-playbook -i /home/vagrant/hosts -K playbook1.yml --ask-vault-password
+
+PLAY RECAP *********************************************************************************************************************************************************************************
+db01                       : ok=12   changed=3    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0
+loadbalancer               : ok=6    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0
+web01                      : ok=7    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0
+web02                      : ok=7    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0
+
+```
+
+- Checking the database
+  ```bash
+
+mysql -h 192.168.1.32 -u simple_user -p
+
+
+mysql> show databases;
+
+
++--------------------+
+| Database           |
++--------------------+
+| HW17               |
+| information_schema |
+| performance_schema |
++--------------------+
+3 rows in set (0.01 sec)
+
+
+```
