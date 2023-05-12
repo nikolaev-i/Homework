@@ -1,0 +1,44 @@
+---
+# This playbook is written in YAML and is used to automate the deployment of an Apache web server on a group of hosts. The playbook does the following:
+
+# The hosts section specifies the group of hosts on which the playbook will be executed. In this case, it is set to "webservers", meaning the playbook will be executed on all the hosts in the "webservers" group.
+# The become section is set to "yes", meaning that the playbook will run with administrative privileges.
+# The vars section defines three variables: http_port, https_port, and html_welcome_msg. These variables can be used in the playbook to configure the Apache web server.
+- hosts: webservers
+  become: yes
+  vars:
+    http_port: 8000
+    https_port: 4443
+    html_welcome_msg: "Hello Scalefocus Academy!"
+# The tasks section contains a list of tasks that the playbook will execute.
+# The first task "ensure apache is at the latest version" uses the apt module to update the Apache2 package to the latest version.
+  tasks:
+  - name: ensure apache is at the latest version
+    apt:
+      name: apache2
+      state: latest
+# The second task "write the apache2 ports.conf config file" uses the template module to generate a configuration file for Apache. This configuration file (ports.conf) will specify the ports that Apache should listen on. The template for the file is stored in the "templates" directory and has a .j2 file extension, indicating that it is a Jinja2 template. The template file will be written to the "/etc/apache2/ports.conf" location on the target host.
+  - name: write the apache2 ports.conf config file
+    template:
+      src: templates/ports.conf.j2
+      dest: /etc/apache2/ports.conf
+    notify:
+    - restart apache
+# The third task "write a basic index.html file" uses the template module to generate a basic HTML file that will be served by the Apache web server. The template for the file is stored in the "templates" directory and has a .j2 file extension. The template file will be written to the "/var/www/html/index.html" location on the target host.
+  - name: write a basic index.html file
+    template:
+      src: templates/index.html.j2
+      dest: /var/www/html/index.html
+    notify:
+    - restart apache
+# The fourth task "ensure apache is running" uses the service module to start the Apache2 service if it is not already running.
+  - name: ensure apache is running
+    service:
+      name: apache2
+      state: started
+# The handlers section contains a single handler "restart apache" that uses the service module to restart the Apache2 service. This handler is notified by the second and third tasks to restart the Apache service whenever a change is made to the ports.conf or index.html files.
+  handlers:
+    - name: restart apache
+      service:
+        name: apache2
+        state: restarted
