@@ -1,32 +1,16 @@
-# Ansible Labs
+# Ansible
 
-Welcome to Ansible Labs for the DevOps Academy 2023.
-
-## How to use these Labs
-
-To follow the exercises with Ansible you need to create your own environment for which you need to install VirtualBox as a type-2 hypervisor for virtualization and Vagrant for building your virtual environment.
-
-You can install these tools the classic manual way:
-
-* ### Install Oracle Virtual Box:  https://www.virtualbox.org/
-* ### Install Vagrant: https://www.vagrantup.com/downloads.html
+---
 
 
-Or you can install them with a script:
-```powershell
-$ScriptFromGit = Invoke-WebRequest https://git.davchev.com/DevOps_Academy/ansible-labs/raw/branch/master/install_CVV-stack.ps1
+# Notes
 
-Invoke-Expression $($ScriptFromGit.Content)
-```
-> **_NOTE:_**
-The script will automatically restart your machine.
 
-* ### In a new Directory copy this respository:
-``` shell
-git clone https://git.davchev.com/DevOps_Academy/ansible-labs.git
-```
+Sorry for the crappy pdf but conversion from markdown to pdf sucks
 
-If you have successfully installed the necessary tools listed above, then you can proceed to the [first lab](ansible-lab1/README.md).
+---
+
+
 
 
 
